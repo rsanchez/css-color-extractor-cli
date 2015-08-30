@@ -1,0 +1,39 @@
+{
+  "name": "css-color-extractor-cli",
+  "version": "0.0.0",
+  "description": "CLI for css-color-extractor.",
+  "main": "index.js",
+  "bin": {
+    "css-color-extractor": "./cli.js"
+  },
+  "keywords": [
+    "css",
+    "color"
+  ],
+  "author": "Rob Sanchez <info@robsanchez.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rsanchez/css-color-extractor-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rsanchez/css-color-extractor-cli/issues"
+  },
+  "homepage": "https://github.com/rsanchez/css-color-extractor-cli",
+  "dependencies": {
+    "color": "^0.10.1",
+    "colors": "^1.1.2",
+    "css-color-extractor": "~0",
+    "postcss": "^5.0.2",
+    "postcss-colors-only": "~0",
+    "underscore": "^1.8.3",
+    "yargs": "^3.22.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
+}
