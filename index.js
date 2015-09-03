@@ -14,7 +14,7 @@ module.exports = function (inputFile, outputFile, options) {
     function toHtml(data) {
         var extractor = require('css-color-extractor');
         var colors = extractor.fromCss(data, options);
-        var template = fs.readFileSync('./templates/html.tpl', 'utf8');
+        var template = fs.readFileSync(__dirname+'/templates/html.tpl', 'utf8');
         var render = _.template(template);
 
         sortColors(colors);
