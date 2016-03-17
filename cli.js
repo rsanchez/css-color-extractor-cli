@@ -33,10 +33,12 @@ var options = {
     colorFormat:       argv.c
 };
 
-var cli = require('./');
+var Cli = require('./');
 
-try {
-    cli(inputFile, outputFile, options);
-} catch (e) {
-    console.error(colors.red(e.message || e));
-}
+var cli = new Cli(inputFile, outputFile, options);
+
+cli.onError(function(error) {
+    console.error(colors.red(error.message || error));
+});
+
+cli.process();

@@ -3,8 +3,11 @@
 module.exports = function (inputFile, outputFile, options) {
     var fs = require('fs');
     var path = require('path');
+    var events = require('events');
+    var eventEmitter = new events.EventEmitter();
     var _ = require('underscore');
     var colorObj = require('color');
+    var noInputError = new Error('No input specified.');
 
     function sortColors(colors) {
         colors.sort(function (a, b) {
@@ -113,7 +116,8 @@ module.exports = function (inputFile, outputFile, options) {
 
         process.stdin.on('end', function () {
             if (!data) {
-                throw new Error('No input specified.');
+                emitError(noInputError);
+                return;
             }
 
             processInput(data);
@@ -122,21 +126,37 @@ module.exports = function (inputFile, outputFile, options) {
 
     function processInputFile() {
         if (!inputFile) {
-            throw new Error('No input specified.');
+            emitError(noInputError);
+            return;
         }
 
         fs.readFile(inputFile, 'utf8', function (err, data) {
             if (err) {
-                throw new Error(err);
+                emitError(new Error(err));
+                return;
             }
 
             processInput(data);
         });
     }
 
-    if (!process.stdin.isTTY) {
-        processStdin();
-    } else {
-        processInputFile();
+    function emitError(error) {
+        process.nextTick(function(){
+            eventEmitter.emit('error', error);
+        });
     }
+
+    this.process = function() {
+        if (!process.stdin.isTTY) {
+            processStdin();
+        } else {
+            processInputFile();
+        }
+    };
+
+    this.ERROR_NO_INPUT = noInputError;
+
+    this.onError = function(callback) {
+        eventEmitter.on('error', callback);
+    };
 };
