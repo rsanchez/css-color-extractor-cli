@@ -141,12 +141,12 @@ module.exports = function (inputFile, outputFile, options) {
     }
 
     function emitError(error) {
-        process.nextTick(function(){
+        process.nextTick(function () {
             eventEmitter.emit('error', error);
         });
     }
 
-    this.process = function() {
+    this.process = function () {
         if (!process.stdin.isTTY) {
             processStdin();
         } else {
@@ -156,7 +156,7 @@ module.exports = function (inputFile, outputFile, options) {
 
     this.ERROR_NO_INPUT = noInputError;
 
-    this.onError = function(callback) {
+    this.onError = function (callback) {
         eventEmitter.on('error', callback);
     };
 };
