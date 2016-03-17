@@ -38,7 +38,11 @@ var Cli = require('./');
 var cli = new Cli(inputFile, outputFile, options);
 
 cli.onError(function(error) {
-    console.error(colors.red(error.message || error));
+    if (error === cli.ERROR_NO_INPUT) {
+        console.log(usage);
+    } else {
+        console.error(colors.red(error.message || error));
+    }
 });
 
 cli.process();
