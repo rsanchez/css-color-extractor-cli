@@ -23,7 +23,7 @@
   "dependencies": {
     "color": "^0.10.1",
     "colors": "^1.1.2",
-    "css-color-extractor": "~0",
+    "css-color-extractor": "^0.0.4",
     "postcss": "^5.0.2",
     "postcss-colors-only": "~0",
     "underscore": "^1.8.3",

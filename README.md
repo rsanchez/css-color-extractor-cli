@@ -81,6 +81,12 @@ Use the `--without-grey` or `--without-monochrome` flag(s):
 css-color-extractor input.css --without-grey
 ```
 
+Use the `--color-format` option to transform color output format (`hexString`, `rgbString`, `percentString`, `hslString`, `hwbString`, or `keyword`):
+
+```
+css-color-extractor input.css --color-format=hslString
+```
+
 Extract colors to file:
 
 ```
