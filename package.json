@@ -1,6 +1,6 @@
 {
   "name": "css-color-extractor-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI for css-color-extractor.",
   "main": "index.js",
   "bin": {
