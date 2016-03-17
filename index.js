@@ -2,6 +2,7 @@
 
 module.exports = function (inputFile, outputFile, options) {
     var fs = require('fs');
+    var path = require('path');
     var _ = require('underscore');
     var colorObj = require('color');
 
@@ -14,7 +15,8 @@ module.exports = function (inputFile, outputFile, options) {
     function toHtml(data) {
         var extractor = require('css-color-extractor');
         var colors = extractor.fromCss(data, options);
-        var template = fs.readFileSync(__dirname+'/templates/html.tpl', 'utf8');
+        var filePath = path.join(__dirname, '/templates/html.tpl');
+        var template = fs.readFileSync(filePath, 'utf8');
         var render = _.template(template);
 
         sortColors(colors);
@@ -52,7 +54,6 @@ module.exports = function (inputFile, outputFile, options) {
         var output;
 
         if (outputFile && typeof options.format === 'undefined') {
-            var path = require('path');
             var extension = path.extname(outputFile);
 
             switch (extension) {
