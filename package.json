@@ -21,17 +21,17 @@
   },
   "homepage": "https://github.com/rsanchez/css-color-extractor-cli",
   "dependencies": {
-    "color": "^0.10.1",
+    "color": "^1.0.3",
     "colors": "^1.1.2",
-    "css-color-extractor": "^0.0.4",
+    "css-color-extractor": "0.0.5",
     "postcss": "^5.0.2",
     "postcss-colors-only": "~0",
     "underscore": "^1.8.3",
-    "yargs": "^3.22.2"
+    "yargs": "^7.0.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-eslint": "^1.0.0"
+    "gulp-eslint": "^3.0.1"
   },
   "scripts": {
     "test": "gulp"

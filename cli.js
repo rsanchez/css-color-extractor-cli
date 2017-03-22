@@ -9,7 +9,8 @@ var usage = [
     '-c <format>, --color-format=<format>  Transform output color format:',
     '                                      hexString, rgbString,',
     '                                      percentString, hslString,',
-    '                                      hwbString, or keyword.'
+    '                                      hwbString, or keyword.',
+    '-t <path>, --template-html=<path>     Underscore.js template file path'
 ].join('\n');
 
 var colors = require('colors');
@@ -20,6 +21,7 @@ var argv = require('yargs')
     .alias('m', 'without-monochrome')
     .alias('f', 'format')
     .alias('c', 'color-format')
+    .alias('t', 'template-html')
     .argv;
 
 var inputFile = argv._[0] || null;
@@ -30,7 +32,8 @@ var options = {
     withoutGrey:       argv.g,
     withoutMonochrome: argv.m,
     format:            argv.f,
-    colorFormat:       argv.c
+    colorFormat:       argv.c,
+    templateHTML:      argv.t
 };
 
 var Cli = require('./');
