@@ -18,13 +18,19 @@ module.exports = function (inputFile, outputFile, options) {
     function toHtml(data) {
         var extractor = require('css-color-extractor');
         var colors = extractor.fromCss(data, options);
-        var filePath = path.join(__dirname, '/templates/html.tpl');
+        var filePath = options.templateHTML === undefined || options.templateHTML === null || (options.templateHTML !== undefined && options.templateHTML !== null && !fs.existsSync(options.templateHTML)) ? path.join(__dirname, '/templates/html.tpl') : options.templateHTML;
         var template = fs.readFileSync(filePath, 'utf8');
+        var transparentPath = path.join(__dirname, '/templates/transparent_pattern.svg');
+        var transparent = fs.readFileSync(transparentPath, 'utf-8');
         var render = _.template(template);
 
         sortColors(colors);
 
-        return render({ colors: colors, colorObj: colorObj });
+        return render({
+            colors:      colors,
+            colorObj:    colorObj,
+            transparent: 'url("data:image/svg+xml;base64,' + new Buffer(transparent).toString('base64') + '")'
+        });
     }
 
     function toList(data) {

@@ -172,6 +172,15 @@ css-color-extractor input.css output.html
 css-color-extractor input.css --format=html
 ```
 
+Specify custom Underscore.js template for html:
+
+```
+css-color-extractor input.css output.html -t /path/to/templatefile.tpl
+
+# or to stdout
+css-color-extractor input.css --format=html  --template-html=/path/to/templatefile.tpl
+```
+
 ```css
 .foo {
   color: yellow;
