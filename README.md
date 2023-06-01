@@ -1,9 +1,6 @@
-# CSS Color Extractor [![Build Status][ci-img]][ci]
+# CSS Color Extractor CLI
 
 Extract colors (named, hex, rgb, rgba, hsl, and hsla) from CSS.
-
-[ci-img]:  https://travis-ci.org/rsanchez/css-color-extractor.svg
-[ci]:      https://travis-ci.org/rsanchez/css-color-extractor
 
 ```css
 .foo {
@@ -50,6 +47,11 @@ This module looks at the following CSS properties for colors:
 * `outline-color`
 * `text-shadow`
 * `box-shadow`
+* `fill`
+* `stroke`
+* `stop-color`
+* `flood-color`
+* `lighting-color`
 
 ## Installation
 
@@ -85,6 +87,18 @@ Use the `--color-format` option to transform color output format (`hexString`, `
 
 ```
 css-color-extractor input.css --color-format=hslString
+```
+
+Use the `--sort` option to sort the list of colors (`hue` or `frequency`):
+
+```
+css-color-extractor input.css --sort=hue
+```
+
+Use the `--inverse` option to remove colors from rules:
+
+```
+css-color-extractor input.css output.css --inverse
 ```
 
 Extract colors to file:
