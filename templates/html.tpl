@@ -32,7 +32,7 @@
 <body>
     <div class="container">
         <ul class="swatches"><% _.each(colors, function(color){ %>
-            <li class="swatch <%= colorObj(color).dark() ? 'swatch-dark' : 'swatch-light' %>" style="background-color: <%= color %>;"><%= color %></li><% }); %>
+            <li class="swatch <%= isDark(color) ? 'swatch-dark' : 'swatch-light' %>" style="background-color: <%= color %>;"><%= color %></li><% }); %>
         </ul>
     </div>
 </body>

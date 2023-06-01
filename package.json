@@ -1,6 +1,6 @@
 {
   "name": "css-color-extractor-cli",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "CLI for css-color-extractor.",
   "main": "index.js",
   "bin": {
@@ -21,19 +21,23 @@
   },
   "homepage": "https://github.com/rsanchez/css-color-extractor-cli",
   "dependencies": {
-    "color": "^1.0.3",
-    "colors": "^1.1.2",
-    "css-color-extractor": "0.0.5",
-    "postcss": "^5.0.2",
-    "postcss-colors-only": "~0",
-    "underscore": "^1.8.3",
-    "yargs": "^7.0.2"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^3.0.1"
+    "color": "^4.2.3",
+    "colors": "^1.4.0",
+    "css-color-extractor": "^1.1.2",
+    "lodash.template": "^4.5.0",
+    "postcss": ">=5.0.2 <8.0.0",
+    "postcss-colors-only": "^1.0.0",
+    "yargs": "^17.7.2"
   },
   "scripts": {
-    "test": "gulp"
+    "lint": "eslint index.js",
+    "fix": "eslint index.js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }

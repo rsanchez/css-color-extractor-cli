@@ -1,51 +1,67 @@
 #!/usr/bin/env node
 
-var usage = [
-    'Usage: css-color-extractor <inputFile?> <outputFile?> [options]',
-    '',
-    '-g, --without-grey                    Omit greys.',
-    '-m, --without-monochrome              Omit greys, black, and white.',
-    '-f <format>, --format=<format>        Output format: css, json, or html.',
-    '-c <format>, --color-format=<format>  Transform output color format:',
-    '                                      hexString, rgbString,',
-    '                                      percentString, hslString,',
-    '                                      hwbString, or keyword.',
-    '-t <path>, --template-html=<path>     Underscore.js template file path'
+/**
+ * @typedef Args
+ * @property {boolean} g
+ * @property {boolean} m
+ * @property {boolean} i
+ * @property {"css"|"json"|"html"|undefined} f
+ * @property {string} c
+ * @property {string|null} t
+ * @property {(string|number)[]} _
+ */
+
+const usage = [
+  'Usage: css-color-extractor <inputFile?> <outputFile?> [options]',
+  '',
+  '-g, --without-grey                    Omit greys.',
+  '-m, --without-monochrome              Omit greys, black, and white.',
+  '-f <format>, --format=<format>        Output format: css, json, or html.',
+  '-c <format>, --color-format=<format>  Transform output color format:',
+  '                                      hexString, rgbString,',
+  '                                      percentString, hslString,',
+  '                                      hwbString, or keyword.',
+  '-t <path>, --template-html=<path>     Lodash template file path',
 ].join('\n');
 
-var colors = require('colors');
+const colors = require('colors');
 
-var argv = require('yargs')
-    .usage(usage)
-    .alias('g', 'without-grey')
-    .alias('m', 'without-monochrome')
-    .alias('f', 'format')
-    .alias('c', 'color-format')
-    .alias('t', 'template-html')
-    .argv;
+/** @type Args */
+// @ts-ignore
+const argv = require('yargs/yargs')(process.argv.slice(2))
+  .usage(usage)
+  .options({
+    g: { type: 'boolean', default: false, alias: 'without-grey' },
+    m: { type: 'boolean', default: false, alias: 'without-monochrome' },
+    i: { type: 'boolean', default: false, alias: 'inverse' },
+    f: { type: 'string', default: '', alias: 'format' },
+    c: { type: 'string', default: '', alias: 'color-format' },
+    t: { type: 'string', default: null, alias: 'template-html' },
+  }).argv;
 
-var inputFile = argv._[0] || null;
+const inputFile = argv._[0] ? argv._[0].toString() : null;
 
-var outputFile = argv._[1] || null;
+const outputFile = argv._[1] ? argv._[1].toString() : null;
 
-var options = {
-    withoutGrey:       argv.g,
-    withoutMonochrome: argv.m,
-    format:            argv.f,
-    colorFormat:       argv.c,
-    templateHTML:      argv.t
+const options = {
+  withoutGrey: argv.g,
+  withoutMonochrome: argv.m,
+  inverse: argv.i,
+  format: argv.f,
+  colorFormat: argv.c,
+  templateHTML: argv.t,
 };
 
-var Cli = require('./');
+const Cli = require('./');
 
-var cli = new Cli(inputFile, outputFile, options);
+const cli = new Cli(inputFile, outputFile, options);
 
-cli.onError(function (error) {
-    if (error === cli.ERROR_NO_INPUT) {
-        console.log(usage);
-    } else {
-        console.error(colors.red(error.message || error));
-    }
+cli.onError(function(error) {
+  if (error === cli.ERROR_NO_INPUT) {
+    console.log(usage);
+  } else {
+    console.error(colors.red(error.message || error));
+  }
 });
 
 cli.process();
