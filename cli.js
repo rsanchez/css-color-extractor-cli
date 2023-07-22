@@ -18,9 +18,10 @@ const usage = [
   '-m, --without-monochrome              Omit greys, black, and white.',
   '-f <format>, --format=<format>        Output format: css, json, or html.',
   '-c <format>, --color-format=<format>  Transform output color format:',
-  '                                      hexString, rgbString,',
-  '                                      percentString, hslString,',
-  '                                      hwbString, or keyword.',
+  '                                      hexString, hexaString,',
+  '                                      rgbString, hslString,',
+  '                                      percentString, hwbString,',
+  '                                      or keyword.',
   '-t <path>, --template-html=<path>     Lodash template file path',
 ].join('\n');
 

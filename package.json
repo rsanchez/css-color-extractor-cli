@@ -1,6 +1,6 @@
 {
   "name": "css-color-extractor-cli",
-  "version": "1.0.0",
+  "version": "1.1.4",
   "description": "CLI for css-color-extractor.",
   "main": "index.js",
   "bin": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "color": "^4.2.3",
     "colors": "^1.4.0",
-    "css-color-extractor": "^1.1.2",
+    "css-color-extractor": "^1.1.4",
     "lodash.template": "^4.5.0",
     "postcss": ">=5.0.2 <8.0.0",
     "postcss-colors-only": "^1.0.0",

@@ -45,6 +45,8 @@ This module looks at the following CSS properties for colors:
 * `border-left-color`
 * `outline`
 * `outline-color`
+* `text-decoration`
+* `text-decoration-color`
 * `text-shadow`
 * `box-shadow`
 * `fill`
@@ -83,7 +85,7 @@ Use the `--without-grey` or `--without-monochrome` flag(s):
 css-color-extractor input.css --without-grey
 ```
 
-Use the `--color-format` option to transform color output format (`hexString`, `rgbString`, `percentString`, `hslString`, `hwbString`, or `keyword`):
+Use the `--color-format` option to transform color output format (`hexString`, `hexaString`, `rgbString`, `percentString`, `hslString`, `hwbString`, or `keyword`):
 
 ```
 css-color-extractor input.css --color-format=hslString
